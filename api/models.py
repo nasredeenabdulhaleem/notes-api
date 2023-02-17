@@ -21,6 +21,11 @@ class NoteManager(models.Manager):
         return self.get_queryset().search(query, owner=user)
 
 
+# Priority_choices = [{
+#     1 :"high",
+#     2 : "medium"
+#     3 : "low"
+# }]
 class Note(models.Model):
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=1024)

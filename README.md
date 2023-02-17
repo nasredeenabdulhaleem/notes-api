@@ -14,6 +14,10 @@
 pip install -r requirements.txt
 ```
 
+##### Note
+
+In deployment `SECRET-KEY` `DEBUG-VALUE` and other personal configurations should be save in a `.env` file
+
 #### Key Pip Dependencies
 
 - [Django](http://www.djangoproject.com/) is a high-level Python web framework that encourages rapid development and clean, pragmatic design. Built by experienced developers, it takes care of much of the hassle of web development, so you can focus on writing your app without needing to reinvent the wheel. It’s free and open source.
@@ -85,6 +89,39 @@ The API will return three error types when requests fail:
 - 422: Not Processable
 
 ## Endpoints
+
+#### POST /auth/signup
+
+- General:
+  - Request parameters (optional): page:int
+  - Registers a new User
+  - Returns a Success message, and login details
+- Sample: `curl -X POST http://127.0.0.1:8000/auth/signup -d "{"email" : "admin123@notes.com","username" : "admin123","password" : "admin123"}"`
+
+```
+{
+    "message": "User Created Successfully",
+    "data": {
+        "email": "admin123@notes.com",
+        "username": "admin123"
+    }
+}
+```
+
+#### POST /auth/login
+
+- General:
+  - Request parameters (optional): page:int
+  - Registers a new User
+  - Returns a Success message, and auth token
+- Sample: `curl -X POST http://127.0.0.1:8000/auth/login -d "{"email" : "admin123@notes.com","password" : "admin123"}"`
+
+```
+{
+    "message": "Login Successfull",
+    "token": "b92d6e8a02fe04791125abe30a894e314815b382"
+}
+```
 
 #### GET /api/
 
